@@ -43,7 +43,7 @@
 #     dest: "{{ zabbix_basedir }}"
 #     state: link
 
-# - name: Update zabbix agent default configure file "zabbix_agentd.conf" 
-#   template: 
-#     src: zabbix_agentd.conf.j2
-#     dest: "{{ zabbix_basedir }}/etc/zabbix_agentd.conf"
+- name: Update zabbix agent default configure file "zabbix_agentd.conf" 
+  template: 
+    src: zabbix_agentd.conf.j2
+    dest: "{{ zabbix_basedir }}/etc/zabbix_agentd.conf"
