@@ -1,0 +1,12 @@
+
+- name: Ensure a list of packages installed
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - gcc
+      - make
+      - automake
+      - autoconf
+      - openssl-devel
+      - openldap-devel

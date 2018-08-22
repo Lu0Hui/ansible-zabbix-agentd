@@ -1,4 +1,4 @@
----
+
 - name: Ensure group "{{ zabbix_group }}" exists
   group: 
     name: "{{ zabbix_group }}"
@@ -32,18 +32,18 @@
     creates: "{{ zabbix_source_dir }}/zabbix-{{ zabbix_version }}"
 
 - name: Compile and install zabbix  #? ipv6 tls
-  shell: ./configure --prefix={{ zabbix_basedir }}-{{ zabbix_version }} --enable-agent --with-openssl && make && make install
+  shell: ./configure --prefix={{ zabbix_basedir }} --enable-agent --with-openssl && make -j $(nproc) && make install
   args: 
     chdir: "{{ zabbix_source_dir }}/zabbix-{{ zabbix_version }}"
-    creates: "{{ zabbix_basedir }}-{{ zabbix_version }}"
+    creates: "{{ zabbix_basedir }}"
 
-- name: Create a soft link from zabbix-{{ zabbix_version }} to zabbix
-  file: 
-    src: "{{ zabbix_basedir }}-{{ zabbix_version }}"
-    dest: "{{ zabbix_basedir }}"
-    state: link
+# - name: Create a soft link from zabbix-{{ zabbix_version }} to zabbix
+#   file: 
+#     src: "{{ zabbix_basedir }}-{{ zabbix_version }}"
+#     dest: "{{ zabbix_basedir }}"
+#     state: link
 
-- name: Update zabbix agent default configure file "zabbix_agentd.conf" 
-  template: 
-    src: zabbix_agentd.conf.j2
-    dest: "{{ zabbix_basedir }}/etc/zabbix_agentd.conf"
+# - name: Update zabbix agent default configure file "zabbix_agentd.conf" 
+#   template: 
+#     src: zabbix_agentd.conf.j2
+#     dest: "{{ zabbix_basedir }}/etc/zabbix_agentd.conf"

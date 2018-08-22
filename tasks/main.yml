@@ -11,3 +11,6 @@
     - "{{ ansible_os_family | lower }}.yml"
   tags:
     - always
+
+- include: install.yml
+  tags: install-agentd
