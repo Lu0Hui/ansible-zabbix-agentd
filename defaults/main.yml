@@ -8,6 +8,5 @@ zabbix_source_dir: /usr/local/src
 zabbix_basedir: /data/service/zabbix
 
 # Configuration parameters for "zabbix_agentd.conf"
-zabbix_server: 10.216.90.12
-zabbix_server_port: 10051
+zabbix_server: 10.216.91.17
 zabbix_agentd_port: 10050

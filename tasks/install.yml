@@ -43,7 +43,20 @@
 #     dest: "{{ zabbix_basedir }}"
 #     state: link
 
+- name: Setup zabbix_agentd service configure file "/etc/init.d/{{ zabbix_agentd_service }}" 
+  template: 
+    src: zabbix_agentd.j2
+    dest: "/etc/init.d/{{ zabbix_agentd_service }}"
+    owner: root
+    group: root
+    mode: 0755
+
 - name: Update zabbix agent default configure file "zabbix_agentd.conf" 
   template: 
     src: zabbix_agentd.conf.j2
     dest: "{{ zabbix_basedir }}/etc/zabbix_agentd.conf"
+
+- name: Enable service "{{ zabbix_agentd_service }}" 
+  service: 
+    name: "{{ zabbix_agentd_service }}"
+    enabled: yes
