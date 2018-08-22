@@ -56,6 +56,21 @@
     src: zabbix_agentd.conf.j2
     dest: "{{ zabbix_basedir }}/etc/zabbix_agentd.conf"
 
+# create a directory if it doesn't exist
+- file:
+    path: "{{ zabbix_basedir }}/var/log"
+    state: directory
+    owner: zabbix
+    group: zabbix
+    mode: 0755
+
+- file:
+    path: "{{ zabbix_basedir }}/var/run"
+    state: directory
+    owner: zabbix
+    group: zabbix
+    mode: 0755
+
 - name: Enable service "{{ zabbix_agentd_service }}" 
   service: 
     name: "{{ zabbix_agentd_service }}"

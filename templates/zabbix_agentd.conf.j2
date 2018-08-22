@@ -2,9 +2,9 @@
 # To get more information about Zabbix, visit http://www.zabbix.com
 
 ############ GENERAL PARAMETERS #################
-PidFile=/var/run/zabbix/zabbix_agentd.pid
+PidFile={{ zabbix_basedir }}{{ zabbix_agentd_PidFile }}
 # LogType=file
-LogFile=/var/log/zabbix/zabbix_agentd.log
+LogFile={{ zabbix_basedir }}{{ zabbix_agentd_LogFile }}
 LogFileSize=0
 # DebugLevel=3
 # SourceIP=
@@ -13,9 +13,9 @@ EnableRemoteCommands=0
 
 ##### Passive checks related
 Server={{ zabbix_server }}
-ListenPort={{ zabbix_agentd_port }}
+ListenPort={{ zabbix_agentd_Port }}
 # ListenIP=0.0.0.0
-# StartAgents=3
+StartAgents={{ zabbix_agentd_StartAgents }}
 
 ##### Active checks related
 ServerActive={{ zabbix_server }}

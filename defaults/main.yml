@@ -9,4 +9,8 @@ zabbix_basedir: /data/service/zabbix
 
 # Configuration parameters for "zabbix_agentd.conf"
 zabbix_server: 10.216.91.17
-zabbix_agentd_port: 10050
+zabbix_agentd_Port: 10150
+zabbix_agentd_PidFile: /var/run/zabbix_agentd.pid
+zabbix_agentd_LogFile: /var/log/zabbix_agentd.log
+zabbix_agentd_StartAgents: 5
+
