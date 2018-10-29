@@ -1,2 +1,4 @@
 ---
 # vars file for ansible-zabbix-agentd
+sysd_script: "/usr/lib/systemd/system/zabbix_agentd.service"
+init_script: "/etc/init.d/zabbix_agentd"
