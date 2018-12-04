@@ -28,7 +28,7 @@
 	FULLPATH=$BASEDIR/sbin/$BINARY_NAME
 
 	# PID file
-	PIDFILE=/tmp/$BINARY_NAME.pid
+	PIDFILE=$BASEDIR/var/run/$BINARY_NAME.pid
 
 	# Establish args
 	ERROR=0
@@ -75,7 +75,7 @@ start() {
 
 stop() {
 	echo -n $"Shutting down $BINARY_NAME: "
-	killproc $BINARY_NAME
+	killproc -p $PIDFILE $BINARY_NAME
 	RETVAL=$?
 	echo
 	[ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/$BINARY_NAME
@@ -92,7 +92,7 @@ case "$1" in
 		stop
 		;;
 	status)
-		status $BINARY_NAME
+		status -p $PIDFILE $BINARY_NAME
 		;;
 	restart)
 		stop

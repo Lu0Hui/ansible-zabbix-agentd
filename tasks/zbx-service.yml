@@ -17,7 +17,8 @@
     mode: 0755
   when: use_systemd
 
-- name: Enable service "{{ zabbix_agentd_service }}" 
+- name: Service | Enable and start "{{ zabbix_agentd_service }}"
   service: 
     name: "{{ zabbix_agentd_service }}"
     enabled: yes
+    state: started
