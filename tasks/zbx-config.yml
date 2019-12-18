@@ -1,20 +1,15 @@
 ---
 # Create directory if it doesn't exist
-- name: Make sure the log folder exists.
+- name: Make sure the log,pid folder exists.
   file:
-    path: "{{ zabbix_basedir }}/var/log"
+    path: "{{ item | dirname }}"
     state: directory
     owner: "{{ zabbix_user | default('zabbix') }}"
     group: "{{ zabbix_user | default('zabbix') }}"
     mode: 0755
-
-- name: Make sure the pid folder exists.
-  file:
-    path: "{{ zabbix_basedir }}/var/run"
-    state: directory
-    owner: "{{ zabbix_user | default('zabbix') }}"
-    group: "{{ zabbix_user | default('zabbix') }}"
-    mode: 0755
+  loop:
+    - "{{ zabbix_basedir }}{{ zabbix_agentd_LogFile }}"
+    - "{{ zabbix_basedir }}{{ zabbix_agentd_PidFile }}"
 
 # Setup configuration parameters.
 - name: Update zabbix agent default configure file "zabbix_agentd.conf" 
