@@ -1,2 +1,3 @@
 ---
 # vars file for ansible-zabbix-agentd
+zabbix_agentd_service: zabbix_agentd

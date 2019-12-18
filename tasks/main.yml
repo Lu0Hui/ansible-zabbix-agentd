@@ -1,7 +1,6 @@
 ---
 # tasks file for ansible-zabbix-agentd
-
-- name: Gather variables for each operating system
+- name: Gather variables for each operating system.
   include_vars: "{{ item }}"
   with_first_found:
     - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
@@ -12,5 +11,18 @@
   tags:
     - always
 
-- include: install.yml
-  tags: install-agentd
+- name: Include zbx-install.yml
+  include: zbx-install.yml
+  tags: 
+    - install
+
+- name: Include zbx-config.yml
+  include: zbx-config.yml
+  tags: 
+    - config
+
+# Setup zabbix_agentd service configure file.
+- name: Include zbx-service.yml
+  include: zbx-service.yml
+  tags: 
+    - service

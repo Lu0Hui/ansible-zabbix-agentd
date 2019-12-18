@@ -1,1 +1,3 @@
-zabbix_agentd_service: zabbix_agentd 
+use_initd: true
+use_systemd: false
+init_script: "/etc/init.d/zabbix_agentd"
