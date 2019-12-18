@@ -4,16 +4,16 @@
   file:
     path: "{{ zabbix_basedir }}/var/log"
     state: directory
-    owner: zabbix
-    group: zabbix
+    owner: "{{ zabbix_user | default('zabbix') }}"
+    group: "{{ zabbix_user | default('zabbix') }}"
     mode: 0755
 
 - name: Make sure the pid folder exists.
   file:
     path: "{{ zabbix_basedir }}/var/run"
     state: directory
-    owner: zabbix
-    group: zabbix
+    owner: "{{ zabbix_user | default('zabbix') }}"
+    group: "{{ zabbix_user | default('zabbix') }}"
     mode: 0755
 
 # Setup configuration parameters.
