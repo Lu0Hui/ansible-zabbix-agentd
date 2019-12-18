@@ -33,3 +33,11 @@
 #     src: "{{ zabbix_basedir }}-{{ zabbix_version }}"
 #     dest: "{{ zabbix_basedir }}"
 #     state: link
+
+- name: Recursively change ownership of "{{ zabbix_basedir }}"
+  file:
+    path: "{{ zabbix_basedir }}"
+    state: directory
+    recurse: yes
+    owner: "{{ zabbix_user | default('zabbix') }}"
+    group: "{{ zabbix_group | default('zabbix') }}"
