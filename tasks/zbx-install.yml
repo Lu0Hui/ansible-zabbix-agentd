@@ -2,6 +2,8 @@
 - name: Include "zbx-user.yml".
   when: (zabbix_user is defined) and (zabbix_group is defined)
   include: zbx-user.yml
+  tags:
+    - user
 
 - name: Copy the source archive of zabbix into "{{ zabbix_source_dir }}".
   copy: 
