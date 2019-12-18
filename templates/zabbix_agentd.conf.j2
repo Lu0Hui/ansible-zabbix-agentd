@@ -32,6 +32,9 @@ HostMetadataItem=system.uname
 Timeout=10
 # AllowRoot=0
 # User=zabbix
+{% if zabbix_user is defined %}
+User={{ zabbix_user }}
+{% endif %}
 Include={{ zabbix_basedir }}/etc/zabbix_agentd.conf.d/*.conf
 
 ####### USER-DEFINED MONITORED PARAMETERS #######
