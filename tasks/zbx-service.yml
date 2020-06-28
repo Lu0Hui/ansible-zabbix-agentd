@@ -1,6 +1,6 @@
 ---
 - name: Config service with initd.
-  template: 
+  template:
     src: init.d/zabbix_agentd.j2
     dest: "{{ init_script }}"
     owner: root
@@ -9,7 +9,7 @@
   when: use_initd
 
 - name: Config service with systemd.
-  template: 
+  template:
     src: systemd/zabbix_agentd.service.j2
     dest: "{{ sysd_script }}"
     owner: root
@@ -18,7 +18,7 @@
   when: use_systemd
 
 - name: Service | Enable and start "{{ zabbix_agentd_service }}"
-  service: 
+  service:
     name: "{{ zabbix_agentd_service }}"
     enabled: yes
     state: started

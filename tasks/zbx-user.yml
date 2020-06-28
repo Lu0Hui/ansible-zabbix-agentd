@@ -1,13 +1,13 @@
 ---
 # Create user and group before install.
 - name: Ensure group "{{ zabbix_group }}" exists
-  group: 
+  group:
     name: "{{ zabbix_group }}"
     state: present
     system: yes
 
 - name: Add the user "{{ zabbix_user }}" with a primary group of "{{ zabbix_group }}" and a nologin shell
-  user: 
+  user:
     name: "{{ zabbix_user }}"
     group: "{{ zabbix_group }}"
     shell: /sbin/nologin

@@ -12,7 +12,7 @@
     - "{{ zabbix_basedir }}{{ zabbix_agentd_PidFile }}"
 
 # Setup configuration parameters.
-- name: Update zabbix agent default configure file "zabbix_agentd.conf" 
-  template: 
+- name: Update zabbix agent default configure file "zabbix_agentd.conf"
+  template:
     src: zabbix_agentd.conf.j2
     dest: "{{ zabbix_basedir }}/etc/zabbix_agentd.conf"
