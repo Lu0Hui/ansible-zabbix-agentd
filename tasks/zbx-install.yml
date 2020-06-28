@@ -6,15 +6,15 @@
     - user
 
 - name: Copy the source archive of zabbix into "{{ zabbix_source_dir }}".
-  copy: 
-    src: zabbix-{{ zabbix_version }}.tar.gz 
+  copy:
+    src: zabbix-{{ zabbix_version }}.tar.gz
     dest: "{{ zabbix_source_dir }}"
     owner: root
     group: root
     mode: 0644
 
 - name: Extract the source archive of zabbix
-  unarchive: 
+  unarchive:
     src: "{{ zabbix_source_dir }}/zabbix-{{ zabbix_version }}.tar.gz"
     dest: "{{ zabbix_source_dir }}"
     remote_src: yes
@@ -22,14 +22,14 @@
     group: root
     creates: "{{ zabbix_source_dir }}/zabbix-{{ zabbix_version }}"
 
-- name: Compile and install zabbix  #? ipv6 tls
+- name: Compile and install zabbix #? ipv6 tls
   shell: ./configure --prefix={{ zabbix_basedir }} --enable-agent --with-openssl && make -j $(nproc) && make install
-  args: 
+  args:
     chdir: "{{ zabbix_source_dir }}/zabbix-{{ zabbix_version }}"
     creates: "{{ zabbix_basedir }}"
 
 # - name: Create a soft link from zabbix-{{ zabbix_version }} to zabbix
-#   file: 
+#   file:
 #     src: "{{ zabbix_basedir }}-{{ zabbix_version }}"
 #     dest: "{{ zabbix_basedir }}"
 #     state: link

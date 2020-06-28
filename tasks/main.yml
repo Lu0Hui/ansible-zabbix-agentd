@@ -13,16 +13,16 @@
 
 - name: Include zbx-install.yml
   include: zbx-install.yml
-  tags: 
+  tags:
     - install
 
 - name: Include zbx-config.yml
   include: zbx-config.yml
-  tags: 
+  tags:
     - config
 
 # Setup zabbix_agentd service configure file.
 - name: Include zbx-service.yml
   include: zbx-service.yml
-  tags: 
+  tags:
     - service
